@@ -14,6 +14,6 @@ git commit -m "Describe the change"
 git push
 ```
 
-GitHub Pages republishes automatically within a minute or two.
+Vercel redeploys www.thanksdarsh.org automatically on every push to `main`.
 
 The full photo sets from 2 and 3 October live in Google Drive and are linked from the page, not stored here.
