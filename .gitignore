@@ -1,0 +1,7 @@
+# Working files that are not part of the website
+*.docx
+*.zip
+photos/*/
+Thumbs.db
+desktop.ini
+.DS_Store

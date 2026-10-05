@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thank You, Darsh</title>
+<meta name="description" content="A thank-you letter from Arnur, founder of Tora, to Darsh Singh Mann after AI &amp; Digital Bridge in Astana.">
+<meta name="theme-color" content="#140e29">
+<!--SOCIAL-->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23140e29'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%23ef4a5c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Schibsted+Grotesk:wght@400..700&display=swap">
+<style>
+/* Layout: the panel stage at night. Indigo ground sampled from the photos, slow stage-light beams
+   over the portrait, a white letter laid on the stage, then an empty viewfinder waiting for
+   "a photo of us", and the panel photos running past as a film strip. Crimson = speaker badge. */
+:root {
+  --stage: #140e29;        /* backdrop behind the panel */
+  --stage-lift: #1d1637;
+  --film: #0b0817;         /* film edge, viewfinder */
+  --rule: #2f2852;
+  --chalk: #eeebf6;        /* text on the stage */
+  --haze: #a29cbf;
+  --led: #5b6cff;          /* blue of the LED wall */
+  --card: #f8f7fb;         /* desk name card white */
+  --ink: #1b1631;
+  --ink-soft: #5f5a77;
+  --turban: #a3122a;       /* crimson on white */
+  --marker: #ef4a5c;       /* crimson on the stage */
+  --scrim: rgb(9 6 18 / 0.94);
+
+  --display: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
+  --text: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --label: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-3: clamp(1.9rem, 4.4vw, 3rem);
+  --step-4: clamp(3.4rem, 9.6vw, 8rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --gutter: clamp(16px, 4vw, 44px);
+
+  color-scheme: dark;
+}
+
+html { background: var(--stage); overflow-x: clip; }
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--stage);
+  color: var(--chalk);
+  font-family: var(--text);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--marker); outline-offset: 3px; }
+
+.wrap { max-width: 74rem; margin-inline: auto; padding-inline: var(--gutter); }
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--haze);
+}
+h1, h2 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+
+/* ---------- Ambient layers ---------- */
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  height: 2px;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--marker);
+  background-clip: content-box;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .progress { display: block; animation: grow linear both; animation-timeline: scroll(root); }
+}
+@keyframes grow { to { transform: scaleX(1); } }
+
+.spot {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  mix-blend-mode: screen;
+  background: radial-gradient(30rem circle at var(--mx, 50%) var(--my, 30%),
+    color-mix(in srgb, var(--led) 14%, transparent), transparent 70%);
+}
+.has-pointer .spot { opacity: 1; }
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 1.1s steps(5) infinite;
+}
+@keyframes grain {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-3%, 2%); }
+  40%  { transform: translate(2%, -3%); }
+  60%  { transform: translate(-2%, -1%); }
+  80%  { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: clamp(30rem, 52vw, 44rem);
+  overflow: hidden;
+}
+.hero-photo {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: min(68%, 62rem);
+  transform: translate3d(0, var(--py, 0px), 0);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 35%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 96%);
+          mask-image: linear-gradient(to bottom, #000 52%, transparent 96%);
+  animation: lights-up 2.4s var(--ease) both;
+}
+@keyframes lights-up {
+  from { filter: brightness(0.45) saturate(0.6); transform: scale(1.12); }
+  to   { filter: none; transform: scale(1.02); }
+}
+
+.beams {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
+          mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
+}
+.beam {
+  position: absolute;
+  top: -12%;
+  width: 44rem;
+  height: 125%;
+  margin-left: -22rem;
+  transform-origin: 50% 0;
+  filter: blur(22px);
+  opacity: 0;
+  background: conic-gradient(from 168deg at 50% 0%,
+    transparent 0deg, var(--beam) 12deg, transparent 24deg);
+  animation: beam-on 2s ease-out forwards, sway var(--t) ease-in-out infinite alternate;
+}
+.b1 { left: 22%; --beam: color-mix(in srgb, var(--led) 42%, transparent); --t: 11s; --from: -16deg; --to: 9deg; animation-delay: 0.3s, 0s; }
+.b2 { left: 62%; --beam: color-mix(in srgb, var(--marker) 30%, transparent); --t: 14s; --from: 14deg; --to: -10deg; animation-delay: 0.8s, -5s; }
+.b3 { left: 92%; --beam: color-mix(in srgb, var(--haze) 30%, transparent); --t: 9s; --from: 8deg; --to: -18deg; animation-delay: 1.2s, -2s; }
+@keyframes beam-on { to { opacity: 0.6; } }
+@keyframes sway {
+  from { transform: rotate(var(--from)); }
+  to   { transform: rotate(var(--to)); }
+}
+
+.hero-text {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  padding-block: clamp(3.5rem, 9vw, 7.5rem) 3rem;
+}
+.hero h1 {
+  font-size: var(--step-4);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.012em;
+}
+.hero h1 .line { display: block; }
+.hero h1 em { font-weight: 400; }
+.word { white-space: nowrap; }
+.ch {
+  display: inline-block;
+  animation: rise 1s var(--ease) both;
+  animation-delay: calc(0.35s + var(--i) * 0.05s);
+}
+@keyframes rise {
+  from { transform: translateY(0.3em) rotate(5deg); color: var(--haze); text-shadow: 0 0 0.45em var(--led); }
+  to   { transform: none; text-shadow: 0 0 0 transparent; }
+}
+.stop {
+  color: var(--marker);
+  animation: rise 1s var(--ease) both, badge 2.2s ease-out both;
+  animation-delay: calc(0.35s + var(--i) * 0.05s), 1.4s;
+}
+@keyframes badge {
+  0%   { text-shadow: 0 0 0 transparent; }
+  30%  { text-shadow: 0 0 0.35em var(--marker); }
+  100% { text-shadow: 0 0 0.12em color-mix(in srgb, var(--marker) 50%, transparent); }
+}
+.fade { animation: fade 1s var(--ease) var(--d, 0s) both; }
+@keyframes fade { from { opacity: 0.45; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.hero-sub {
+  margin: 0;
+  max-width: 24rem;
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--haze);
+}
+.hero-sub strong { color: var(--chalk); font-weight: 500; }
+
+/* ---------- Letter ---------- */
+.letter-wrap { perspective: 1400px; }
+.letter {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+  margin: clamp(-9rem, -8vw, -3rem) 0 0 auto;
+  background: var(--card);
+  color: var(--ink);
+  padding: clamp(1.75rem, 5vw, 3.75rem);
+  box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.7);
+  display: grid;
+  gap: 1.1rem;
+  font-size: var(--step-1);
+  line-height: 1.62;
+  transform-origin: 50% 100%;
+  animation: lay-down 1.3s var(--ease) 0.9s both;
+}
+@keyframes lay-down {
+  from { transform: translateY(48px) rotateX(12deg); }
+  to   { transform: none; }
+}
+.letter::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--turban), var(--marker), var(--led), var(--turban));
+  background-size: 300% 100%;
+  animation: ribbon 8s linear infinite;
+}
+@keyframes ribbon { to { background-position: 300% 0; } }
+.letter p { margin: 0; max-width: 34em; }
+.letter .dateline {
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.letter .salute { font-style: italic; }
+.letter .signoff { margin-top: 0.75rem; display: grid; gap: 0.15rem; }
+.sig {
+  display: inline-block;
+  justify-self: start;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--turban);
+  padding-right: 0.2em;
+}
+.role {
+  font-family: var(--label);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+@supports (animation-timeline: view()) {
+  .letter p:not(.signoff), .scroll-in {
+    animation: drift-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+  .sig {
+    animation: ink linear both;
+    animation-timeline: view();
+    animation-range: entry 10% entry 100%;
+  }
+}
+@keyframes drift-in {
+  from { opacity: 0.3; transform: translateY(22px); filter: blur(3px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes ink {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* ---------- A photo of us ---------- */
+.us {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1.2fr);
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-block: clamp(4.5rem, 10vw, 8rem) clamp(3rem, 7vw, 5rem);
+}
+.viewfinder {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 2;
+  max-width: 100%;
+  background: var(--film);
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 1px var(--rule), 0 40px 80px -40px color-mix(in srgb, var(--led) 45%, transparent);
+}
+.viewfinder canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: hunt 7s ease-in-out infinite;
+}
+@keyframes hunt {
+  0%, 100% { filter: blur(9px); }
+  45%, 55% { filter: blur(2.5px); }
+}
+.vf-ui {
+  position: absolute;
+  inset: clamp(0.75rem, 2vw, 1.25rem);
+  pointer-events: none;
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--chalk);
+  font-variant-numeric: tabular-nums;
+}
+.corner { position: absolute; width: 1.6rem; height: 1.6rem; border: 0 solid var(--chalk); opacity: 0.85; }
+.c-tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.c-tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.c-bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.c-br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+.vf-row {
+  position: absolute;
+  left: 2.3rem;
+  right: 2.3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.vf-top { top: 0.3rem; }
+.vf-bottom { bottom: 0.3rem; }
+.vf-dim { color: var(--haze); }
+.waiting { display: inline-flex; align-items: center; gap: 0.5em; color: var(--marker); }
+.waiting i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--marker);
+  box-shadow: 0 0 0.6rem var(--marker);
+  animation: blink 1.4s ease-in-out infinite;
+}
+@keyframes blink { 50% { opacity: 0.15; box-shadow: none; } }
+.vf-title {
+  position: relative;
+  padding-inline: 1rem;
+  text-align: center;
+  font-style: italic;
+  font-size: clamp(2.1rem, 6.2vw, 4.75rem);
+  line-height: 1;
+  color: var(--chalk);
+  text-shadow: 0 0 1.1em color-mix(in srgb, var(--led) 70%, transparent);
+}
+.flash {
+  position: absolute;
+  inset: 0;
+  background: var(--chalk);
+  opacity: 0;
+  pointer-events: none;
+}
+.flash.go { animation: flash 0.5s ease-out; }
+@keyframes flash { 0% { opacity: 0.85; } 100% { opacity: 0; } }
+.us-copy { display: grid; gap: 0.9rem; align-content: end; padding-bottom: 0.25rem; }
+.us-copy p:not(.eyebrow) { margin: 0; font-size: var(--step-1); line-height: 1.5; }
+.us-copy .eyebrow { color: var(--marker); }
+.shutter {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem 0.6rem 0.65rem;
+  border: 1px solid var(--rule);
+  background: var(--stage-lift);
+  color: var(--chalk);
+  font-family: var(--label);
+  font-size: var(--step--1);
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s var(--ease);
+}
+.shutter::before {
+  content: "";
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: 2px solid var(--chalk);
+  box-sizing: border-box;
+  background: radial-gradient(circle, var(--marker) 0 38%, transparent 42%);
+}
+.shutter:hover { border-color: var(--haze); transform: translateY(-2px); }
+.shutter:active { transform: scale(0.97); }
+
+/* ---------- Panel photos strip ---------- */
+.panels { padding-block: clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem); }
+.panels-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 0.75rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.panels-head > div { display: grid; gap: 0.6rem; }
+.panels-head h2 { font-size: var(--step-3); line-height: 1.05; }
+.panels-head > p {
+  margin: 0;
+  max-width: 24rem;
+  color: var(--haze);
+  font-family: var(--label);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+.strip {
+  overflow-x: auto;
+  padding-block: 0.75rem 1rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+.track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  padding-inline: var(--gutter);
+}
+.strip.is-running { overflow: hidden; }
+.strip.is-running .track {
+  padding-inline: 0 1rem;
+  animation: marquee 70s linear infinite;
+}
+.strip.is-running:hover .track,
+.strip.is-running:focus-within .track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.thumb {
+  flex: none;
+  width: clamp(13rem, 25vw, 19rem);
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.45rem 0.5rem 0.55rem;
+  border: 0;
+  background: var(--film);
+  color: var(--haze);
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+  transition: transform 0.4s var(--ease);
+}
+.thumb:hover, .thumb:focus-visible { transform: translateY(-6px) rotate(-0.6deg); }
+.thumb img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: filter 0.3s ease; }
+.thumb:hover img { filter: brightness(1.15); }
+.edge {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--label);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+.thumb[data-pick] .edge span:first-child { color: var(--marker); }
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+.days .eyebrow { flex-basis: 100%; }
+.day {
+  position: relative;
+  overflow: hidden;
+  flex: 0 1 19rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem 0.85rem 1.1rem;
+  background: var(--stage-lift);
+  border: 1px solid var(--rule);
+  color: var(--chalk);
+  text-decoration: none;
+  transition: transform 0.35s var(--ease), border-color 0.25s ease, box-shadow 0.35s ease;
+}
+.day::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, color-mix(in srgb, var(--chalk) 14%, transparent) 50%, transparent 65%);
+  transform: translateX(-100%);
+  transition: transform 0.7s var(--ease);
+  pointer-events: none;
+}
+.day:hover, .day:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--marker);
+  box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--marker) 70%, transparent);
+}
+.day:hover::after, .day:focus-visible::after { transform: translateX(100%); }
+.day-num {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.day-text { display: grid; gap: 0.15rem; }
+.day-text b {
+  font-family: var(--label);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.day-text span { font-family: var(--label); font-size: var(--step--1); color: var(--haze); }
+.day-arrow {
+  margin-left: auto;
+  font-family: var(--label);
+  font-size: 1.25rem;
+  color: var(--haze);
+  transition: transform 0.35s var(--ease), color 0.25s ease;
+}
+.day:hover .day-arrow, .day:focus-visible .day-arrow { transform: translate(3px, -3px); color: var(--marker); }
+@media (max-width: 520px) { .day { flex-basis: 100%; } }
+
+/* ---------- Viewer ---------- */
+.viewer {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--chalk);
+  max-width: min(94vw, 72rem);
+  width: 100%;
+}
+.viewer[open] { animation: fade 0.35s var(--ease); }
+.viewer::backdrop { background: var(--scrim); }
+.viewer figure { margin: 0; display: grid; gap: 0.85rem; }
+.viewer img { width: auto; max-width: 100%; max-height: 76vh; margin-inline: auto; background: var(--film); }
+.viewer figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  font-family: var(--label);
+  font-size: var(--step--1);
+  color: var(--haze);
+}
+.viewer figcaption span:first-child { color: var(--chalk); }
+.viewer-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; justify-content: center; }
+.btn {
+  font-family: var(--label);
+  font-size: var(--step--1);
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--rule);
+  background: var(--stage-lift);
+  color: var(--chalk);
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--haze); }
+
+/* ---------- Footer ---------- */
+.foot {
+  border-top: 1px solid var(--rule);
+  padding-block: 2rem 3rem;
+  font-family: var(--label);
+  font-size: var(--step--1);
+  color: var(--haze);
+}
+.foot p { margin: 0; }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 760px) {
+  .hero { min-height: 0; display: flex; flex-direction: column; }
+  .hero-text { order: 1; padding-block: 2.75rem 0.5rem; }
+  .hero-photo {
+    order: 2;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+  }
+  .hero-photo img { object-position: 62% 40%; }
+  .beam { width: 30rem; margin-left: -15rem; }
+  .letter { margin-top: -3.5rem; }
+  .us { grid-template-columns: minmax(0, 1fr); }
+  .vf-row { left: 2rem; right: 2rem; font-size: 0.5625rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .beam { opacity: 0.5; }
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<div class="spot" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-photo">
+    <img src="photos/photo_4_2026-10-05_22-55-55.jpg" alt="Darsh Singh Mann speaking on the main-stage panel at AI &amp; Digital Bridge in Astana" fetchpriority="high">
+  </div>
+  <div class="beams" aria-hidden="true"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span></div>
+  <div class="wrap hero-text">
+    <p class="eyebrow fade" style="--d:0.15s">AI &amp; Digital Bridge &middot; Astana 2026</p>
+    <h1 aria-label="Thank you, Darsh.">
+      <span class="line" aria-hidden="true"><span class="word"><span class="ch" style="--i:0">T</span><span class="ch" style="--i:1">h</span><span class="ch" style="--i:2">a</span><span class="ch" style="--i:3">n</span><span class="ch" style="--i:4">k</span></span> <span class="word"><span class="ch" style="--i:5">y</span><span class="ch" style="--i:6">o</span><span class="ch" style="--i:7">u</span><span class="ch" style="--i:8">,</span></span></span>
+      <span class="line" aria-hidden="true"><em class="word"><span class="ch" style="--i:10">D</span><span class="ch" style="--i:11">a</span><span class="ch" style="--i:12">r</span><span class="ch" style="--i:13">s</span><span class="ch" style="--i:14">h</span></em><span class="ch stop" style="--i:15">.</span></span>
+    </h1>
+    <p class="hero-sub fade" style="--d:1.3s">A note from <strong>Arnur, founder of Tora</strong>.</p>
+  </div>
+</header>
+
+<main>
+  <section class="wrap letter-wrap" aria-label="Letter">
+    <article class="letter">
+      <p class="dateline">6 October 2026</p>
+      <p class="salute">Dear Darsh,</p>
+      <p>Thank you again for coming to Astana for AI &amp; Digital Bridge. I really appreciate that you found time to talk with a guy you had just met and to hear about what I&rsquo;m building.</p>
+      <p>You also offered to help me with introductions. That means a lot to me. On this website, I&rsquo;ll post updates, results and other important news about Tora, so it can become a roadmap for Tora as a foundational AI company.</p>
+      <p>Personally, I think it will be interesting to look back here after a while and see how far Tora has come. I&rsquo;ll keep you updated by email as well.</p>
+      <p>And in case you didn&rsquo;t receive them, the photos from your panels are below.</p>
+      <p>I hope we meet again, in Astana or in California. If the stars align, maybe next time I&rsquo;ll be at Stanford as an undergraduate, or visiting as the founder of Tora.</p>
+      <p class="signoff">
+        <span>With thanks,</span>
+        <span class="sig">Arnur</span>
+        <span class="role">Founder, Tora</span>
+      </p>
+    </article>
+  </section>
+
+  <section class="wrap us" aria-labelledby="us-title">
+    <figure class="viewfinder" id="viewfinder">
+      <canvas id="bokeh" aria-hidden="true"></canvas>
+      <div class="vf-ui" aria-hidden="true">
+        <span class="corner c-tl"></span><span class="corner c-tr"></span><span class="corner c-bl"></span><span class="corner c-br"></span>
+        <span class="vf-row vf-top"><span>Next frame</span><span class="vf-dim">Reserved</span></span>
+        <span class="vf-row vf-bottom"><span class="vf-dim">f/1.8 &middot; 1/125 &middot; ISO 800</span><span class="waiting"><i></i><span id="vf-state">Waiting</span></span></span>
+      </div>
+      <h2 class="vf-title" id="us-title">A photo of us</h2>
+      <span class="flash" id="flash" aria-hidden="true"></span>
+    </figure>
+    <div class="us-copy scroll-in">
+      <p class="eyebrow">Still missing</p>
+      <p>Unfortunately, I didn&rsquo;t take a photo with you in Astana. I hope we can take one next time.</p>
+      <button class="shutter" type="button" id="shutter">Press the shutter</button>
+    </div>
+  </section>
+
+  <section class="panels" aria-labelledby="panels-title">
+    <div class="wrap panels-head">
+      <div>
+        <p class="eyebrow">7 frames</p>
+        <h2 id="panels-title">Photos from your panels</h2>
+      </div>
+      <p>Tap a photo to open it. To keep one, press and hold it, or right-click and save.</p>
+    </div>
+    <div class="strip" id="strip">
+      <div class="track" id="track">
+        <button class="thumb" type="button" data-i="0" data-cap="Main stage, the panel lineup after the session">
+          <span class="edge"><span>&#9656; 01</span><span>Astana 26</span></span>
+          <img src="photos/photo_1_2026-10-05_22-55-55.jpg" alt="Darsh with five other panelists on the main stage at AI &amp; Digital Bridge">
+        </button>
+        <button class="thumb" type="button" data-i="1" data-cap="With the other speakers, in front of the AI &amp; Digital Bridge backdrop">
+          <span class="edge"><span>&#9656; 02</span><span>Astana 26</span></span>
+          <img src="photos/photo_2_2026-10-05_22-55-55.jpg" alt="Darsh with five other speakers in front of the AI &amp; Digital Bridge backdrop">
+        </button>
+        <button class="thumb" type="button" data-i="2" data-cap="The panel in discussion">
+          <span class="edge"><span>&#9656; 03</span><span>Astana 26</span></span>
+          <img src="photos/photo_3_2026-10-05_22-55-55.jpg" alt="The panel in discussion, Darsh listening in the foreground">
+        </button>
+        <button class="thumb" type="button" data-i="3" data-cap="Speaking on the main-stage panel">
+          <span class="edge"><span>&#9656; 04</span><span>Astana 26</span></span>
+          <img src="photos/photo_4_2026-10-05_22-55-55.jpg" alt="Darsh speaking on the main-stage panel">
+        </button>
+        <button class="thumb" type="button" data-i="4" data-cap="Making a point during the discussion">
+          <span class="edge"><span>&#9656; 05</span><span>Astana 26</span></span>
+          <img src="photos/photo_5_2026-10-05_22-55-55.jpg" alt="Darsh making a point during the panel">
+        </button>
+        <button class="thumb" type="button" data-i="5" data-pick data-cap="Answering a question on stage. My favourite of the set.">
+          <span class="edge"><span>&#9656; 06 &#9733;</span><span>Astana 26</span></span>
+          <img src="photos/photo_6_2026-10-05_22-55-55.jpg" alt="Darsh gesturing as he answers a question on stage">
+        </button>
+        <button class="thumb" type="button" data-i="6" data-cap="Main stage, a second take of the group photo">
+          <span class="edge"><span>&#9656; 07</span><span>Astana 26</span></span>
+          <img src="photos/photo_7_2026-10-05_22-55-55.jpg" alt="The main-stage panel lineup, a second take">
+        </button>
+      </div>
+    </div>
+    <div class="wrap days">
+      <p class="eyebrow">All photos from your sessions, on Google Drive</p>
+      <a class="day" href="https://drive.google.com/drive/folders/1pta0A-yJKydI_KXTxXOOt1EYjFtVXkFS?usp=sharing" target="_blank" rel="noopener">
+        <span class="day-num">02</span>
+        <span class="day-text"><b>October</b><span>Open the folder</span></span>
+        <span class="day-arrow" aria-hidden="true">&nearr;</span>
+      </a>
+      <a class="day" href="https://drive.google.com/drive/folders/1aOjppBA6H_8FrWXa5ucUbOPgRDJdgftt?usp=sharing" target="_blank" rel="noopener">
+        <span class="day-num">03</span>
+        <span class="day-text"><b>October</b><span>Open the folder</span></span>
+        <span class="day-arrow" aria-hidden="true">&nearr;</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Made by Arnur for Darsh Singh Mann, October 2026. Photos from AI &amp; Digital Bridge, Astana.</p>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Photo viewer">
+  <figure>
+    <img id="viewer-img" src="" alt="">
+    <figcaption><span id="viewer-cap"></span><span id="viewer-num"></span></figcaption>
+  </figure>
+  <div class="viewer-controls">
+    <button class="btn" type="button" id="viewer-prev">&larr; Previous</button>
+    <button class="btn" type="button" id="viewer-next">Next &rarr;</button>
+    <button class="btn" type="button" id="viewer-close">Close</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- Spotlight and hero parallax ---------- */
+  var heroPhoto = document.querySelector('.hero-photo');
+  var mx = 0, my = 0, queued = false;
+  function tick() {
+    queued = false;
+    heroPhoto.style.setProperty('--py', (Math.min(window.scrollY, 900) * 0.18).toFixed(1) + 'px');
+    root.style.setProperty('--mx', mx + 'px');
+    root.style.setProperty('--my', my + 'px');
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(tick); } }
+  if (!reduce) {
+    window.addEventListener('scroll', queue, { passive: true });
+    if (fine) {
+      root.classList.add('has-pointer');
+      window.addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; queue(); }, { passive: true });
+    }
+  }
+
+  /* ---------- Film strip ---------- */
+  var strip = document.getElementById('strip');
+  var track = document.getElementById('track');
+  var originals = Array.prototype.slice.call(track.children);
+  if (!reduce) {
+    originals.forEach(function (n) {
+      var c = n.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.tabIndex = -1;
+      track.appendChild(c);
+    });
+    strip.classList.add('is-running');
+  }
+
+  /* ---------- Photo viewer ---------- */
+  var dlg = document.getElementById('viewer');
+  var vImg = document.getElementById('viewer-img');
+  var vCap = document.getElementById('viewer-cap');
+  var vNum = document.getElementById('viewer-num');
+  var cur = 0;
+  function show(i) {
+    cur = (i + originals.length) % originals.length;
+    var t = originals[cur], img = t.querySelector('img');
+    vImg.src = img.src;
+    vImg.alt = img.alt;
+    vCap.textContent = t.getAttribute('data-cap');
+    vNum.textContent = 'Frame 0' + (cur + 1) + ' of 07';
+  }
+  track.addEventListener('click', function (e) {
+    var t = e.target.closest('.thumb');
+    if (!t) return;
+    show(+t.getAttribute('data-i'));
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+  });
+  function close() { if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open'); }
+  document.getElementById('viewer-prev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('viewer-next').addEventListener('click', function () { show(cur + 1); });
+  document.getElementById('viewer-close').addEventListener('click', close);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+
+  /* ---------- Viewfinder: out-of-focus stage lights ---------- */
+  var cv = document.getElementById('bokeh');
+  var ctx = cv.getContext('2d');
+  var css = getComputedStyle(root);
+  function rgb(name) {
+    var h = css.getPropertyValue(name).trim().replace('#', '');
+    return parseInt(h.slice(0, 2), 16) + ',' + parseInt(h.slice(2, 4), 16) + ',' + parseInt(h.slice(4, 6), 16);
+  }
+  var palette = [rgb('--led'), rgb('--led'), rgb('--marker'), rgb('--haze'), rgb('--chalk')];
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  var rand = rng(5), dots = [];
+  for (var i = 0; i < 36; i++) {
+    dots.push({
+      x: rand(), y: rand(), r: 0.035 + rand() * 0.1,
+      c: palette[Math.floor(rand() * palette.length)],
+      a: 0.12 + rand() * 0.3,
+      vx: (rand() - 0.5) * 0.012, vy: (rand() - 0.5) * 0.008,
+      w: 0.4 + rand() * 1.1, p: rand() * 6.283
+    });
+  }
+  var W = 0, H = 0;
+  function size() {
+    var r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function wrap(v) { return ((v % 1) + 1) % 1 * 1.3 - 0.15; }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    var m = Math.max(W, H);
+    for (var k = 0; k < dots.length; k++) {
+      var d = dots[k];
+      var x = wrap(d.x + d.vx * t) * W, y = wrap(d.y + d.vy * t) * H, r = d.r * m;
+      var a = d.a * (0.7 + 0.3 * Math.sin(t * d.w + d.p));
+      var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, 'rgba(' + d.c + ',' + (a * 0.5).toFixed(3) + ')');
+      g.addColorStop(0.82, 'rgba(' + d.c + ',' + (a * 0.8).toFixed(3) + ')');
+      g.addColorStop(0.93, 'rgba(' + d.c + ',' + a.toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(' + d.c + ',0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
+    }
+  }
+  size();
+  draw(0);
+  var running = false, start = performance.now();
+  function loop(now) { if (!running) return; draw((now - start) / 1000); requestAnimationFrame(loop); }
+  if (reduce) { draw(6); }
+  else if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      var on = entries[0].isIntersecting;
+      if (on && !running) { running = true; requestAnimationFrame(loop); }
+      if (!on) running = false;
+    }).observe(cv);
+  } else { running = true; requestAnimationFrame(loop); }
+  window.addEventListener('resize', function () { size(); if (!running) draw(6); });
+
+  /* ---------- Shutter ---------- */
+  var flash = document.getElementById('flash');
+  var state = document.getElementById('vf-state');
+  document.getElementById('shutter').addEventListener('click', function () {
+    flash.classList.remove('go');
+    void flash.offsetWidth;
+    flash.classList.add('go');
+    state.textContent = 'Next time';
+  });
+})();
+</script>
+
+</body>
+</html>
